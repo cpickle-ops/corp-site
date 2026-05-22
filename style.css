@@ -26,7 +26,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  background: #0b5cab;
+  background: #000435;
   color: white;
 }
 
@@ -96,7 +96,7 @@ body {
   display: inline-block;
   margin-top: 20px;
   padding: 12px 24px;
-  background: #0b5cab;
+  background: #000435;
   color: white;
   text-decoration: none;
   border-radius: 6px;
@@ -107,7 +107,7 @@ body {
 }
 
 .btn-primary:hover {
-  background: #094a8a;
+  background: #000435;
 }
 
 .full-width {
