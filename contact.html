@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact</title>
+
+  <!-- Salesforce SDK (UNCHANGED) -->
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/b6017cc2-5283-4e07-a2d0-5df228a8fb3f/scripts/c360a.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">⚡ DemoBrand</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-header">
+  <h1>Contact Us</h1>
+  <p>Register your details to experience personalised marketing journeys.</p>
+</section>
+
+<section class="form-section">
+  <form id="contact-form" class="form-card">
+
+    <h2 class="form-title">Get Started</h2>
+
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" placeholder="Enter your first name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" placeholder="Enter your last name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+
+    <button type="submit" class="btn-primary full-width">Submit</button>
+
+  </form>
+</section>
+
+
+<!-- ✅ SALESFORCE CODE (UNCHANGED) -->
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+ event.preventDefault();
+
+ const email = document.getElementById("email").value;
+ const firstName = document.getElementById("firstName").value;
+ const lastName = document.getElementById("lastName").value;
+
+ window.userData = {
+ email,
+ firstName,
+ lastName
+ };
+
+ SalesforceInteractions.sendEvent({
+ interaction: {
+ name: "IdentityCapture"
+ },
+ user: {
+ identities: {
+ email: email
+ },
+ attributes: {
+ eventType: "identity",
+ firstName: firstName,
+ lastName: lastName,
+ email: email,
+ isAnonymous: 0
+ }
+ }
+ });
+
+ console.log("✅ Identity event sent");
+});
+</script>
+
+</body>
+</html>
